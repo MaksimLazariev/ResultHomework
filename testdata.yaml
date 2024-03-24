@@ -1,0 +1,11 @@
+address: https://test-stand.gb.ru
+browser: chrome
+sleep_time: 1
+
+login: Gris
+password: 2575a9ed0d
+login_error: 401
+login_word: Blog
+
+about_title: About Page
+font_size: 32px
