@@ -71,22 +71,21 @@ class OperationsHelper(BasePage):
         logging.debug(f'We find text {text} in field {element_name}')
         return text
 
-    def get_font_size(self, locator, description=None):
+    def get_css_property(self, locator, property_name, description=None):
         if description:
             element_name = description
         else:
             element_name = locator
-        field = self.find_element(locator, time=3)
+        field = self.get_element_property(locator, property_name)
         if not field:
             return None
         try:
-            font_size = field.get_attribute("Font")
-            # value_of_css_property('font-size')
+            pass
         except:
             logging.exception(f'Exception while get test from {element_name}')
             return None
-        logging.debug(f'We find font_size {font_size} in field {element_name}')
-        return font_size
+        logging.debug(f'We find property {field} in field {element_name}')
+        return field
 
     # ENTER TEXT
     def enter_login(self, word):
@@ -113,7 +112,7 @@ class OperationsHelper(BasePage):
         return self.get_text_from_element(TestSearchLocators.ids['LOCATOR_ABOUT_TITTLE'], description='about tittle')
 
     def get_about_font_size(self):
-        return self.get_font_size(TestSearchLocators.ids['LOCATOR_ABOUT_CSS_TITTLE'], description='about tittle font size')
+        return self.get_css_property(TestSearchLocators.ids['LOCATOR_ABOUT_TITTLE'], 'font-size', description='about tittle font size')
 
 
 def login():
